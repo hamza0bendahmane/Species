@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                         int curSize = speciesList.size();
 
                         // check if there is more data to show
-                        if (curSize < count && next != null)
+                        if (next != null)
                             new GetSpecies().execute();
 
                         view.post(new Runnable() {
