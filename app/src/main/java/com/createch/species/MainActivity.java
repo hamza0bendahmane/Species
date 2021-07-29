@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     String previous = null;
     int count ;
     RecyclerView recyclerView;
+    EndlessRecyclerViewScrollListener scrollListener;
     ArrayList<Species> speciesList ,tempList;
     SpeciesAdapter adapter;
     @Override
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
                 final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-                EndlessRecyclerViewScrollListener scrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager) {
+                 scrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager) {
                     @Override
                     public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                         int curSize = speciesList.size();
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                         view.post(new Runnable() {
                             @Override
                             public void run() {
-                                adapter.notifyItemRangeInserted(curSize, speciesList.size() - 1);
+                                adapter.notifyItemRangeInserted(curSize, tempList.size() - 1);
                             }
                         });
                     }
@@ -88,7 +89,9 @@ public class MainActivity extends AppCompatActivity {
         swpier.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                speciesList = new ArrayList<>();
+                recyclerView.scrollToPosition(0);
+                tempList.clear();
+                speciesList.clear();
                 new GetSpecies().execute();
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
@@ -132,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
                     count = jsonObj.getInt("count");
 
                     // looping through All results
-                    tempList = new ArrayList<>();
+                    tempList.clear();
 
                     for (int i = 0; i < results.length(); i++) {
                         JSONObject c = results.getJSONObject(i);
@@ -142,16 +145,15 @@ public class MainActivity extends AppCompatActivity {
                         boolean sele = false;
 
 
-                        // tmp hash map for single contact
+                        // tmp  for single
                         Species sp = new Species();
 
-                        // adding each child node to HashMap key => value
                         sp.setName(name);
                         sp.setClassification(classification);
                         sp.setDesignation(designation);
                         sp.setSelected(sele);
 
-                        // adding contact to contact list
+                        // adding  to  list
                         tempList.add(sp);
                     }
 
