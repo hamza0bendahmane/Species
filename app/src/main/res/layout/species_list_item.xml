@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mcd"
+    android:layout_margin="10dp"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="10dp"
+    app:layout_goneMarginBottom="10dp"
+    android:theme="@style/Theme.MaterialComponents.Light"
+    android:background="#FFF"
+    android:focusable="true"
+    android:clickable="true"
+    android:minHeight="100dp"
+    app:cardElevation="10dp"
+    app:contentPadding="10dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:paddingEnd="16dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:paddingLeft="16dp"
+        android:focusable="true"
+        android:clickable="true"
+        android:paddingRight="16dp"
+        android:paddingStart="16dp" android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/montserrat"
+                android:maxLines="1"
+                android:textAllCaps="true"
+                android:textColor="@color/colorAccent"
+                android:textSize="12sp"
+                tools:text="name" />
+
+            <TextView
+                android:id="@+id/classification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/montserrat"
+                android:maxLines="2"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                tools:text="classification" />
+
+        </LinearLayout>
+
+
+
+
+            <TextView
+                android:id="@+id/designantion"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/montserrat"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textColor="@color/red"
+                android:textSize="12sp"
+                tools:text="designantion" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
