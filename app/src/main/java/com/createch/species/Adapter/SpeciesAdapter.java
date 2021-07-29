@@ -95,7 +95,7 @@ public class SpeciesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         viewHolder.name.setText(item.getName());
         viewHolder.designation.setText(item.getDesignation());
         viewHolder.classification.setText(item.getClassification());
-  
+
 
     }
 

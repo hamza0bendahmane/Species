@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     String next = "https://swapi.dev/api/species/?page=1";
     String previous = null;
     int count ;
-    boolean loading = true;
     RecyclerView recyclerView;
     ArrayList<Species> speciesList ,tempList;
     SpeciesAdapter adapter;
@@ -53,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                 recyclerView = (RecyclerView) findViewById(R.id.list);
+                 recyclerView =  findViewById(R.id.list);
                adapter = new SpeciesAdapter(speciesList,getApplicationContext());
         recyclerView.setAdapter(adapter);
                 final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -61,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 EndlessRecyclerViewScrollListener scrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager) {
                     @Override
                     public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                        int curSize = adapter.getItemCount();
+                        int curSize = speciesList.size();
 
                         // check if there is more data to show
                         if (curSize < count && next != null)
